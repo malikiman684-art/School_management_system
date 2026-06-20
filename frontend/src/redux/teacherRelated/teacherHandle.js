@@ -26,7 +26,10 @@ export const getAllTeachers = (id) => async (dispatch) => {
       dispatch(getSuccess(result.data)); // Dispatch getSuccess with the retrieved data
     }
   } catch (error) {
-    dispatch(getError(error));
+    // 🌟 Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };
 
@@ -44,7 +47,10 @@ export const getTeacherDetails = (id) => async (dispatch) => {
       dispatch(doneSuccess(result.data));
     }
   } catch (error) {
-    dispatch(getError(error));
+    // 🌟 Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };
 
@@ -65,6 +71,9 @@ export const updateTeachSubject =
       dispatch(postDone()); // Dispatch postDone to indicate successful update
 
     } catch (error) {
-      dispatch(getError(error));
+      // 🌟 Extract only the serializable string message!
+      const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+      
+      dispatch(getError(errorMessage));
     }
   };

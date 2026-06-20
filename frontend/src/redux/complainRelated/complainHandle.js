@@ -3,7 +3,6 @@ import { getRequest, getSuccess, getFailed, getError } from "./complainSlice";
 
 //const REACT_APP_BASE_URL="http://localhost:5000"
 
-
 // Async action to fetch all complains
 export const getAllComplains = (id, address) => async (dispatch) => {
   // Dispatch getRequest to indicate the start of the request
@@ -18,14 +17,15 @@ export const getAllComplains = (id, address) => async (dispatch) => {
     if (result.data.message) {
       // Dispatch getFailed with the error message
       dispatch(getFailed(result.data.message));
-    }
-     else {
+    } else {
       // Dispatch getSuccess with the retrieved data
       dispatch(getSuccess(result.data));
     }
   } 
   catch (error) {
-    // Dispatch getError with the error object if an error occurs
-    dispatch(getError(error));
+    //  Extract only the string message so Redux stays happy!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };

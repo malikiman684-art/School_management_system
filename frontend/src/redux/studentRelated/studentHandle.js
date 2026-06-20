@@ -26,7 +26,10 @@ export const getAllStudents = (id) => async (dispatch) => {
       dispatch(getSuccess(result.data)); // Dispatch getSuccess with the retrieved data
     }
   } catch (error) {
-    dispatch(getError(error));
+    // 🌟 Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };
 
@@ -51,11 +54,15 @@ export const updateStudentFields =
         dispatch(stuffDone()); // Dispatch stuffDone to indicate successful update
       }
     } catch (error) {
-      dispatch(getError(error));
+      // 🌟 Extract only the serializable string message!
+      const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+      
+      dispatch(getError(errorMessage));
     }
   };
 
-export const removeStuff = (id, address) => async (dispatch) => {
+
+  export const removeStuff = (id, address) => async (dispatch) => {
   dispatch(getRequest()); // Dispatch getRequest to indicate the start of the request
 
   // Try to make an asynchronous PUT request to the specified URL
@@ -70,6 +77,9 @@ export const removeStuff = (id, address) => async (dispatch) => {
       dispatch(stuffDone()); // Dispatch stuffDone to indicate successful removal
     }
   } catch (error) {
-    dispatch(getError(error));
+    // 🌟 Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };

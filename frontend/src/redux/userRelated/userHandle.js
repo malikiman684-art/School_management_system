@@ -123,6 +123,7 @@ export const updateUser = (fields, id, address) => async (dispatch) => { // Asyn
   }
 };
 
+
 export const addStuff = (fields, address) => async (dispatch) => { // Async action to add stuff
   dispatch(authRequest());
 
@@ -140,6 +141,9 @@ export const addStuff = (fields, address) => async (dispatch) => { // Async acti
       dispatch(stuffAdded(result.data)); // Dispatch stuffAdded with the retrieved data
     }
   } catch (error) {
-    dispatch(authError(error)); // Dispatch authError with the error object
+    // 🌟 Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(authError(errorMessage)); // Dispatch authError with the string message
   }
 };

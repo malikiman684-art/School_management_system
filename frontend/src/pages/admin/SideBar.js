@@ -20,29 +20,30 @@ import ReportIcon from "@mui/icons-material/Report";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 
 const SideBar = () => {
-  // Get the current location from react-router-dom
   const location = useLocation();
+  
   return (
     <>
       <React.Fragment>
         {/* Home button */}
         <ListItemButton component={Link} to="/">
-          <Tooltip title={"Home"}> {/* Tooltip for the Home button */}
+          <Tooltip title="Home">
             <ListItemIcon>
               <HomeIcon
                 color={
-                  location.pathname === ("/" || "/Admin/dashboard")
+                  location.pathname === "/" || location.pathname === "/Admin/dashboard"
                     ? "primary"
                     : "inherit"
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Home" /> {/* Text for the Home button */}
-        {/* Classes button */}
+          </Tooltip>
+          <ListItemText primary="Home" />
         </ListItemButton>
+
+        {/* Classes button */}
         <ListItemButton component={Link} to="/Admin/classes">
-          <Tooltip title={"Classes"}>
+          <Tooltip title="Classes">
             <ListItemIcon>
               <ClassOutlinedIcon
                 color={
@@ -52,12 +53,13 @@ const SideBar = () => {
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Classes" /> {/* Text for the Classes button */}
-        {/* Subjects button */}
+          </Tooltip>
+          <ListItemText primary="Classes" />
         </ListItemButton>
+
+        {/* Subjects button */}
         <ListItemButton component={Link} to="/Admin/subjects">
-          <Tooltip title={"Subjects"}>
+          <Tooltip title="Subjects">
             <ListItemIcon>
               <AssignmentIcon
                 color={
@@ -67,12 +69,13 @@ const SideBar = () => {
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Subjects" /> {/* Text for the Subjects button */}
-        {/* Teachers button */}
+          </Tooltip>
+          <ListItemText primary="Subjects" />
         </ListItemButton>
+
+        {/* Teachers button */}
         <ListItemButton component={Link} to="/Admin/teachers">
-          <Tooltip title={"Teachers"}>
+          <Tooltip title="Teachers">
             <ListItemIcon>
               <SupervisorAccountOutlinedIcon
                 color={
@@ -82,12 +85,13 @@ const SideBar = () => {
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Teachers" /> {/* Text for the Teachers button */}
-        {/* Students button */}
+          </Tooltip>
+          <ListItemText primary="Teachers" />
         </ListItemButton>
+
+        {/* Students button */}
         <ListItemButton component={Link} to="/Admin/students">
-          <Tooltip title={"Students"}>
+          <Tooltip title="Students">
             <ListItemIcon>
               <PersonOutlineIcon
                 color={
@@ -97,12 +101,13 @@ const SideBar = () => {
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Students" /> {/* Text for the Students button */}
-        {/* Notices button */}
+          </Tooltip>
+          <ListItemText primary="Students" />
         </ListItemButton>
+
+        {/* Notices button */}
         <ListItemButton component={Link} to="/Admin/notices">
-          <Tooltip title={"Notice"}>
+          <Tooltip title="Notice">
             <ListItemIcon>
               <AnnouncementOutlinedIcon
                 color={
@@ -112,12 +117,13 @@ const SideBar = () => {
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Notices" /> {/* Text for the Notices button */}
-        {/* Complains button */}
+          </Tooltip>
+          <ListItemText primary="Notices" />
         </ListItemButton>
+
+        {/* Complains button */}
         <ListItemButton component={Link} to="/Admin/complains">
-          <Tooltip title={"Complains"}>
+          <Tooltip title="Complains">
             <ListItemIcon>
               <ReportIcon
                 color={
@@ -127,18 +133,21 @@ const SideBar = () => {
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Complains" /> {/* Text for the Complains button */}
+          </Tooltip>
+          <ListItemText primary="Complains" />
         </ListItemButton>
       </React.Fragment>
+
       <Divider sx={{ my: 1 }} />
+
       <React.Fragment>
-        {/* User section */}
         <ListSubheader component="div" inset>
-          User {/* User section header */}
+          User
         </ListSubheader>
+
+        {/* Profile button */}
         <ListItemButton component={Link} to="/Admin/profile">
-          <Tooltip title={"Profile"}>
+          <Tooltip title="Profile">
             <ListItemIcon>
               <AccountCircleOutlinedIcon
                 color={
@@ -148,12 +157,13 @@ const SideBar = () => {
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Profile" /> {/* Text for the Profile button */}
-        {/* Logout button */}
+          </Tooltip>
+          <ListItemText primary="Profile" />
         </ListItemButton>
+
+        {/* Logout button */}
         <ListItemButton component={Link} to="/logout">
-          <Tooltip title={"Logout"}>
+          <Tooltip title="Logout">
             <ListItemIcon>
               <ExitToAppIcon
                 color={
@@ -163,8 +173,8 @@ const SideBar = () => {
                 }
               />
             </ListItemIcon>
-          </Tooltip> {/* Display the tooltip */}
-          <ListItemText primary="Logout" /> {/* Text for the Logout button */}
+          </Tooltip>
+          <ListItemText primary="Logout" />
         </ListItemButton>
       </React.Fragment>
     </>

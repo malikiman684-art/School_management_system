@@ -287,7 +287,7 @@ const ClassDetails = () => {
 
         return (
             <>
-                <box sx={{ width: '100%', typography: 'body1', }}>
+                <Box sx={{ width: '100%', typography: 'body1', }}>
                     <Box sx={{
                         boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', // Apply box shadow
                         padding: '20px', // Add some padding for spacing
@@ -324,7 +324,7 @@ const ClassDetails = () => {
                                 Add Subjects
                             </Button>
                         </div>)}
-                </box>
+                </Box>
             </>
 
 

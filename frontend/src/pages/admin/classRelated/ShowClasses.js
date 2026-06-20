@@ -99,44 +99,48 @@ const ShowClasses = () => {
     };
     return (
       <>
-        <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-          <Tooltip title="Add Students & Subjects">
-            <IconButton
-              onClick={handleClick}
-              size="small"
-              sx={{ ml: 2 }}
-              aria-controls={open ? 'account-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-            >
-              <h5>Add</h5>
-              <SpeedDialIcon />
-            </IconButton>
-          </Tooltip>
-        </Box>
-        <Menu
-          anchorEl={anchorEl}
-          id="account-menu"
-          open={open}
-          onClose={handleClose}
-          onClick={handleClose}
-          PaperProps={{
-            elevation: 0,
-            sx: styles.styledPaper,
-          }}
-          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-        >
-          {actions.map((action) => (
-            <MenuItem onClick={action.action}>
-              <ListItemIcon fontSize="small">
-                {action.icon}
-              </ListItemIcon>
-              {action.name}
-            </MenuItem>
-          ))}
-        </Menu>
-      </>
+  <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+    <Tooltip title="Add Students & Subjects">
+      <IconButton
+        onClick={handleClick}
+        size="small"
+        sx={{ ml: 2 }}
+        aria-controls={open ? 'account-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+      >
+        {/* 🛠️ Wrapped in a single span to guarantee Tooltip is perfectly happy */}
+        <span>
+          <h5>Add</h5>
+          <SpeedDialIcon />
+        </span>
+      </IconButton>
+    </Tooltip>
+  </Box>
+  <Menu
+    anchorEl={anchorEl}
+    id="account-menu"
+    open={open}
+    onClose={handleClose}
+    onClick={handleClose}
+    PaperProps={{
+      elevation: 0,
+      sx: styles.styledPaper,
+    }}
+    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+  >
+    {/* 🛠️ Added unique key prop using action.name (or action.id if you have one) */}
+    {actions.map((action) => (
+      <MenuItem key={action.name} onClick={action.action}>
+        <ListItemIcon fontSize="small">
+          {action.icon}
+        </ListItemIcon>
+        {action.name}
+      </MenuItem>
+    ))}
+  </Menu>
+</>
     );
   }
 

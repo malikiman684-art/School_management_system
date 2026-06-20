@@ -12,6 +12,7 @@ export const getAllNotices = (id, address) => async (dispatch) => {
     const result = await axios.get(
       `${process.env.REACT_APP_BASE_URL}/${address}List/${id}`
     );
+    
     // Check if the response contains a message indicating an error
     if (result.data.message) {
       dispatch(getFailed(result.data.message));
@@ -22,7 +23,9 @@ export const getAllNotices = (id, address) => async (dispatch) => {
     }
   } 
   catch (error) {
-    // Dispatch getError with the error object if an error occurs
-    dispatch(getError(error));
+    //  Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };

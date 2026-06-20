@@ -30,7 +30,10 @@ export const getAllSclasses = (id, address) => async (dispatch) => {
       dispatch(getSuccess(result.data));
     }
   } catch (error) {
-    dispatch(getError(error));
+    //  Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };
 
@@ -50,9 +53,13 @@ export const getClassStudents = (id) => async (dispatch) => {
       dispatch(getStudentsSuccess(result.data)); // Dispatch getStudentsSuccess with the retrieved data
     }
   } catch (error) {
-    dispatch(getError(error));
+    //  Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };
+
 
 // Async action to fetch details of a specific class
 export const getClassDetails = (id, address) => async (dispatch) => {
@@ -69,9 +76,13 @@ export const getClassDetails = (id, address) => async (dispatch) => {
       dispatch(detailsSuccess(result.data));
     }
   } catch (error) {
-    dispatch(getError(error));
+    //  Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };
+
 
 // Async action to fetch the list of subjects
 export const getSubjectList = (id, address) => async (dispatch) => {
@@ -90,9 +101,13 @@ export const getSubjectList = (id, address) => async (dispatch) => {
       dispatch(getSubjectsSuccess(result.data));
     }
   } catch (error) {
-    dispatch(getError(error));
+    //  Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };
+
 
 // Async action to fetch the list of free subjects for a teacher
 export const getTeacherFreeClassSubjects = (id) => async (dispatch) => {
@@ -111,7 +126,10 @@ export const getTeacherFreeClassSubjects = (id) => async (dispatch) => {
       dispatch(getSubjectsSuccess(result.data));
     }
   } catch (error) {
-    dispatch(getError(error));
+    //  Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   }
 };
 
@@ -130,6 +148,9 @@ export const getSubjectDetails = (id, address) => async (dispatch) => {
       dispatch(getSubDetailsSuccess(result.data));
     }
   } catch (error) {
-    dispatch(getError(error));
+    //  Extract only the serializable string message!
+    const errorMessage = error.response?.data?.message || error.message || "An error occurred";
+    
+    dispatch(getError(errorMessage));
   } 
 };
