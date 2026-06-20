@@ -15,7 +15,7 @@ app.use(express.json({ limit: "10mb" }));
 
 // --- CORS Configuration ---
 // Only allow your frontend’s Vercel domain
-const allowedOrigin = "http://localhost:3000";
+const allowedOrigin = "https://school-management-system-dc9t.vercel.app";
 
 const corsOptions = {
   origin: function (origin, callback) {
